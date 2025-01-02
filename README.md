@@ -1,5 +1,9 @@
 # User Registration and Authentication System
 ![Description of image](https://github.com/EsraaSherif104/user_registration/blob/master/login.PNG)
+![Description of image](https://github.com/EsraaSherif104/user_registration/blob/master/register.PNG)
+![Description of image](https://github.com/EsraaSherif104/user_registration/blob/master/welcome%20page.PNG)
+
+
 This is a simple user registration and authentication system built using ASP.NET Core MVC. 
 ## Features
 - Registration: Users can register with a username, email, and password.
