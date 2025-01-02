@@ -1,3 +1,8 @@
+using Microsoft.AspNetCore.Mvc.DataAnnotations;
+using Microsoft.Extensions.Localization;
+using user_registration.Models;
+using Microsoft.EntityFrameworkCore;
+
 namespace user_registration
 {
     public class Program
@@ -6,16 +11,21 @@ namespace user_registration
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
-            builder.Services.AddControllersWithViews();
+            builder.Services.AddControllersWithViews()
+                .AddDataAnnotationsLocalization(options =>
+                {
+                    options.DataAnnotationLocalizerProvider = (type, factory) =>
+                        factory.Create("Resources", "user_registration");
+                });
+
+            builder.Services.AddDbContext<UserDbcontext>(options =>
+               options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
             var app = builder.Build();
 
-            // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
             {
                 app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
 
@@ -28,7 +38,7 @@ namespace user_registration
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+                pattern: "{controller=Account}/{action=Login}/{id?}");
 
             app.Run();
         }
