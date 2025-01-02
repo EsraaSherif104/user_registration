@@ -11,4 +11,4 @@ This is a simple user registration and authentication system built using ASP.NET
 - Error Handling: Displays error messages for incorrect login or registration.
 - If the user is not found during login, an error message will be displayed:
   User does't exist or login  are incorrect
-- Success Page: Redirects to a welcome page upon successful login or registration.
+- Success Page: Redirects to a welcome page upon successful login .
